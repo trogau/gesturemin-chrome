@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "Gesturemin Chrome",
+  "version": "0.9",
+  "description": "A simple gestures extension for Chrome. ",
+  "author": "trogau",
+  "homepage_url": "https://github.com/trogau/gesturemin-chrome",
+  "icons": {
+    "96": "resources/img/iconx96.png",
+    "48": "resources/img/iconx48.png",
+    "32": "resources/img/iconx32.png"
+  },
+  "permissions": [
+    "sessions"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "run_at": "document_start",
+      "match_about_blank": true,
+      "all_frames": true,
+      "js": [
+        "core/content.js"
+      ],
+      "css": [
+        "core/interfaces/css/mouse-gesture-interface.css"
+      ]
+    }
+  ],
+  "background": {
+    "service_worker": "core/background.js",
+    "type": "module"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "resources/fonts/arrows.woff"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
